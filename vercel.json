@@ -1,0 +1,9 @@
+{
+  "buildCommand": "pnpm build",
+  "devCommand": "pnpm dev",
+  "installCommand": "pnpm install",
+  "framework": "express",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
