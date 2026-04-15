@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -7,7 +7,7 @@ import { existsSync } from "fs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-async function startServer() {
+async function startServer(): Promise<void> {
   const app = express();
   const server = createServer(app);
 
@@ -20,7 +20,7 @@ async function startServer() {
   app.use(express.static(staticPath));
 
   // Handle client-side routing - serve index.html for all routes
-  app.get("*", (_req, res) => {
+  app.get("*", (_req: Request, res: Response) => {
     const indexPath = path.join(staticPath, "index.html");
     // Check if index.html exists, otherwise send 404
     if (!existsSync(indexPath)) {
